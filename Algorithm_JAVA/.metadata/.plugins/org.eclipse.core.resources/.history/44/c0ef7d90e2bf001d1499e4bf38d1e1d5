@@ -1,0 +1,45 @@
+package usingEclipse;
+
+import java.io.*;
+import java.util.*;
+
+public class baekjoon_1806 {
+	public static void main(String[] args) throws Exception {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		// N, S 입력
+		StringTokenizer st = new StringTokenizer(in.readLine(), " ");
+		int N = Integer.parseInt(st.nextToken());
+		int S = Integer.parseInt(st.nextToken());
+
+		int[] input = new int[N];
+		// 수열 입력
+		st = new StringTokenizer(in.readLine(), " ");
+		for (int n = 0; n < N; n++) {
+			input[n] = Integer.parseInt(st.nextToken());
+		}
+		int start = 0;
+		int end = 0;
+
+		int minLength=Integer.MAX_VALUE;
+		while (true) {
+			if (start >= N) {
+				break;
+			}
+			int sum = 0;
+			for (int cur = start; cur <= end; cur++) {
+				sum += input[cur];
+			}
+			if(sum>=S) {
+				int length=end-start+1;
+				minLength=Math.min(minLength, length);
+				start++;
+			}
+			if(sum<S) {
+				end++;
+			}
+		}
+		
+		
+
+	}
+}
